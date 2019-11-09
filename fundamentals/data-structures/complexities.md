@@ -52,3 +52,8 @@
 - Enqueue: **O(1)**
 - Dequeue: **O(1)**
 
+# BST
+
+- [Implementation in JavaScript](./BST.ts)
+- Insert: **average O(logn), worst O(n)**
+- Searching: **average O(logn), worst O(n)**
