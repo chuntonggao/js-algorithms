@@ -57,3 +57,10 @@
 - [Implementation in JavaScript](./BST.ts)
 - Insert: **average O(logn), worst O(n)**
 - Searching: **average O(logn), worst O(n)**
+
+# Binary Heap
+
+- [Implementation in JavaScript](./MaxBinaryHeap.ts)
+- Insert: **O(logn)**
+- Delete: **O(logn)**
+- Search: **O(n)**
