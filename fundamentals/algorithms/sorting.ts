@@ -29,10 +29,27 @@ const selectionSort = (arr: number[]): number[] => {
     return arr;
 };
 
+const insertionSort = (arr: number[]): number[] => {
+    for (let i = 1; i < arr.length; i++) {
+        const cur = arr[i];
+        let j = i - 1;
+        while (j >= 0 && arr[j] > cur) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = cur;
+    }
+    return arr;
+};
+
 log('===== BUBBLE SORT =====');
 log(bubbleSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
 log('===== =========== =====');
 
 log('===== SELECTION SORT =====');
 log(selectionSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
+log('===== =========== =====');
+
+log('===== INSERTION SORT =====');
+log(insertionSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
 log('===== =========== =====');
