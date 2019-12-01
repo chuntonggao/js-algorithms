@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class LRUCache {
     class Node {
         int key;
         int value;
@@ -56,48 +56,47 @@ class Solution {
         }
     }
 
-    class LRUCache {
-        Map<Integer, Node> cache = new HashMap<>();
-        DLinkedList list = new DLinkedList();
-        int size = 0;
-        int capacity;
+    Map<Integer, Node> cache = new HashMap<>();
+    DLinkedList list = new DLinkedList();
+    int size = 0;
+    int capacity;
 
-        public LRUCache(int capacity) {
-            this.size = 0;
-            this.capacity = capacity;
-        }
-
-        public int get(int key) {
-            Node node = cache.get(key);
-            if (node == null)
-                return -1;
-            list.moveToHead(node);
-            return node.value;
-        }
-
-        public void put(int key, int value) {
-            Node node = cache.get(key);
-            if (node == null) {
-                Node newNode = new Node(key, value);
-                cache.put(key, newNode);
-                list.addNode(newNode);
-                size++;
-                if (size > capacity) {
-                    Node tail = list.popTail();
-                    cache.remove(tail.key);
-                    size--;
-                }
-            } else {
-                node.value = value;
-                list.moveToHead(node);
-            }
-        }
+    public LRUCache(int capacity) {
+        this.size = 0;
+        this.capacity = capacity;
     }
 
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.run();
+    public int get(int key) {
+        Node node = cache.get(key);
+        if (node == null)
+            return -1;
+        list.moveToHead(node);
+        return node.value;
+    }
 
+    public void put(int key, int value) {
+        Node node = cache.get(key);
+        if (node == null) {
+            Node newNode = new Node(key, value);
+            cache.put(key, newNode);
+            list.addNode(newNode);
+            size++;
+            if (size > capacity) {
+                Node tail = list.popTail();
+                cache.remove(tail.key);
+                size--;
+            }
+        } else {
+            node.value = value;
+            list.moveToHead(node);
+        }
+    }
+}
+
+class LRUCacheSolution {
+    public static void main(String[] args) {
+        LRUCacheSolution solution = new LRUCacheSolution();
+        solution.run();
     }
 
     public void run() {
