@@ -2,12 +2,13 @@ import java.util.*;
 
 class Solution {
     class Node {
-        private int key;
-        private int value;
-        private Node prev;
-        private Node next;
+        int key;
+        int value;
+        Node prev;
+        Node next;
 
-        public Node() {}
+        public Node() {
+        }
 
         public Node(int key, int value) {
             this.key = key;
@@ -18,8 +19,8 @@ class Solution {
     }
 
     class DLinkedList {
-        private Node head;
-        private Node tail;
+        Node head;
+        Node tail;
 
         public DLinkedList() {
             head = new Node();
@@ -56,10 +57,10 @@ class Solution {
     }
 
     class LRUCache {
-        private Map<Integer, Node> cache = new HashMap<>();
-        private DLinkedList list = new DLinkedList();
-        private int size = 0;
-        private int capacity;
+        Map<Integer, Node> cache = new HashMap<>();
+        DLinkedList list = new DLinkedList();
+        int size = 0;
+        int capacity;
 
         public LRUCache(int capacity) {
             this.size = 0;
@@ -93,8 +94,14 @@ class Solution {
         }
     }
 
-    private LRUCache cache = new LRUCache(2 /* capacity */ C);
     public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.run();
+
+    }
+
+    public void run() {
+        LRUCache cache = new LRUCache(2 /* capacity */);
         cache.put(1, 1);
         cache.put(2, 2);
         System.out.println(cache.get(1)); // returns 1
@@ -105,8 +112,6 @@ class Solution {
         System.out.println(cache.get(3)); // returns 3
         System.out.println(cache.get(4)); // returns 4
     }
-
-
 }
 /**
  * Your LRUCache object will be instantiated and called as such: LRUCache obj =
