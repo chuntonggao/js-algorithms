@@ -7,10 +7,10 @@ class LRUCache {
         Node prev;
         Node next;
 
-         Node() {
+        Node() {
         }
 
-         Node(int key, int value) {
+        Node(int key, int value) {
             this.key = key;
             this.value = value;
             this.prev = null;
@@ -22,14 +22,14 @@ class LRUCache {
         Node head;
         Node tail;
 
-         DLinkedList() {
+        DLinkedList() {
             head = new Node();
             tail = new Node();
             head.next = tail;
             tail.prev = head;
         }
 
-         void addNode(Node node) {
+        void addNode(Node node) {
             // always add ned node right after head
             node.prev = head;
             node.next = head.next;
@@ -37,19 +37,19 @@ class LRUCache {
             head.next = node;
         }
 
-         void removeNode(Node node) {
+        void removeNode(Node node) {
             Node prev = node.prev;
             Node next = node.next;
             prev.next = next;
             next.prev = prev;
         }
 
-         void moveToHead(Node node) {
+        void moveToHead(Node node) {
             removeNode(node);
             addNode(node);
         }
 
-         Node popTail() {
+        Node popTail() {
             Node res = tail.prev;
             removeNode(res);
             return res;
@@ -61,12 +61,12 @@ class LRUCache {
     int size = 0;
     int capacity;
 
-     LRUCache(int capacity) {
+    LRUCache(int capacity) {
         this.size = 0;
         this.capacity = capacity;
     }
 
-     int get(int key) {
+    int get(int key) {
         Node node = cache.get(key);
         if (node == null)
             return -1;
@@ -74,7 +74,7 @@ class LRUCache {
         return node.value;
     }
 
-     void put(int key, int value) {
+    void put(int key, int value) {
         Node node = cache.get(key);
         if (node == null) {
             Node newNode = new Node(key, value);
@@ -99,7 +99,7 @@ class LRUCacheSolution {
         solution.run();
     }
 
-     void run() {
+    void run() {
         LRUCache cache = new LRUCache(2 /* capacity */);
         cache.put(1, 1);
         cache.put(2, 2);
