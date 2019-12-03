@@ -73,6 +73,28 @@ const quickSort = (arr, left = 0, right = arr.length - 1): number[] => {
     return arr;
 };
 
+// time: best nlogn, avg nlogn, worst nlogn
+// space: n
+const mergeSort = arr => {
+    const merge = (arr1, arr2) => {
+        const res = [];
+        let i = 0;
+        let j = 0;
+        while (i < arr1.length && j < arr2.length) {
+            if (arr2[j] > arr1[i]) res.push(arr1[i++]);
+            else res.push(arr2[j++]);
+        }
+        while (i < arr1.length) res.push(arr1[i++]);
+        while (j < arr2.length) res.push(arr2[j++]);
+        return res;
+    };
+
+    if (arr.length <= 1) return arr;
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+};
 
 log('===== BUBBLE SORT =====');
 log(bubbleSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
@@ -88,4 +110,8 @@ log('===== =========== =====');
 
 log('===== QUICK SORT =====');
 log(quickSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
+log('===== =========== =====');
+
+log('===== MERGE SORT =====');
+log(mergeSort([ 8, 1, 2, 3, 4, 5, 6, 7 ]));
 log('===== =========== =====');
