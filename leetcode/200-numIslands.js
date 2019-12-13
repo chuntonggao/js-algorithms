@@ -4,7 +4,7 @@
  */
 
 
-var numIslandsDFS = function(grid) {
+const numIslandsDFS = function(grid) {
     const dfs = (grid, r, c) => {
         const numR = grid.length;
         const numC = grid[0].length;
@@ -18,7 +18,7 @@ var numIslandsDFS = function(grid) {
         dfs(grid, r, c - 1);
         dfs(grid, r, c + 1);
     }
-    
+
     if (!grid || grid.length === 0) return 0;
     const numR = grid.length;
     const numC = grid[0].length;
@@ -33,12 +33,12 @@ var numIslandsDFS = function(grid) {
     return numIslands;
 };
 
-var numIslandsBFS = function(grid) {
+const numIslandsBFS = function(grid) {
     if (!grid || grid.length === 0) return 0;
     const numR = grid.length;
     const numC = grid[0].length;
     let numIslands = 0;
-    
+
     for (let r = 0; r < numR; r++) {
         for (let c = 0; c < numC; c++) {
             if (grid[r][c] === '1') {
@@ -84,7 +84,7 @@ const UnionFind = function(grid) {
                 this.parent[i * numC + j] = i * numC + j;
                 this.count++;
             }
-            this.rank[i * numR + j] = 0;       
+            this.rank[i * numR + j] = 0;
         }
     }
 };
@@ -117,7 +117,7 @@ UnionFind.prototype.getCount = function() {
     return this.count;
 }
 
-var numIslands = function(grid) {
+const numIslands = function(grid) {
     if (!grid || grid.length === 0) return 0;
     const numR = grid.length;
     const numC = grid[0].length;
@@ -130,11 +130,11 @@ var numIslands = function(grid) {
                 if (r - 1 >= 0 && grid[r - 1][c] === '1')
                     uf.union(r * numC + c, (r - 1) * numC + c);
                 if (r + 1 < numR && grid[r + 1][c] === '1')
-                    uf.union(r * numC + c, (r + 1) * numC + c); 
+                    uf.union(r * numC + c, (r + 1) * numC + c);
                 if (c - 1 >= 0 && grid[r][c - 1] === '1')
                     uf.union(r * numC + c, r * numC + c - 1);
                 if (c + 1 < numC && grid[r][c + 1] === '1')
-                    uf.union(r * numC + c, r * numC + c + 1);                
+                    uf.union(r * numC + c, r * numC + c + 1);
             }
         }
     }
