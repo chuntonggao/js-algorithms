@@ -12,6 +12,17 @@ const binarySearchIterative = (arr, e) => {
 	return arr[middle] === e ? middle : -1;
 }
 
+const binarySearchIterative2 = (arr, e) => {
+	let start = 0, end = arr.length - 1;
+	while (start <= end) {
+		const mid = Math.floor((start + end) / 2);
+		if (arr[mid] === e) return mid;
+		else if (arr[mid] < e) start = mid + 1;
+		else end = mid - 1;
+	}
+	return -1;
+}
+
 const binarySearchRecursive = (arr, e) => {
 	if(arr.length === 0) return false;
 	const start = 0;
@@ -34,6 +45,15 @@ log(binarySearchIterative(arr, 300));
 log(binarySearchIterative(arr, 900));
 log(binarySearchIterative(arr, 6));
 log(binarySearchIterative([], 0));
+log('iterative2');
+log(binarySearchIterative2(arr, 1));
+log(binarySearchIterative2(arr, 2));
+log(binarySearchIterative2(arr, 4));
+log(binarySearchIterative2(arr, 5));
+log(binarySearchIterative2(arr, 300));
+log(binarySearchIterative2(arr, 900));
+log(binarySearchIterative2(arr, 6));
+log(binarySearchIterative2([], 0));
 log('recursive');
 log(binarySearchRecursive(arr, 1));
 log(binarySearchRecursive(arr, 2));
